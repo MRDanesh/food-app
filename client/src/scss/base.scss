@@ -1,0 +1,48 @@
+
+:root{
+    --primary-color: #7510f7;
+    --primary-color2: #64ffda;
+    --color-primary-light: #FF3366;
+    --color-primary-dark: #BA265D;
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+    --shadow-dark: 0 2rem 6rem rgb(0, 0, 0, 0.3);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: 'Raleway', sans-serif;
+    background-color: #fff;
+    min-height: 100vh;
+    
+}
+
+body{
+    font-weight: 400;
+    line-height: 1.6;
+    height: 95%;
+}
+
+
+footer{
+    font-weight: bold;
+    border-top: 1px solid gray;
+    margin-top: 2rem;
+}
