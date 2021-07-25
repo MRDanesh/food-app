@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 
-const Header = () => {
+const Header = ({term, setTerm}) => {
+    const [inputTerm, setInputTerm] = useState('');
+    
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        setTerm(inputTerm);
+    }
+
     return (
         <div className='header'>
             <div className='header__left'>
                 FoodFind
             </div>
-            <form className='header__form'>
+            <form onSubmit={onFormSubmit} className='header__form'>
             <svg 
                 className='header__form__icon'
                 xmlns="http://www.w3.org/2000/svg" 
@@ -18,7 +25,7 @@ const Header = () => {
                 <path d="M0 0h24v24H0V0z" fill="none"/>
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
             </svg>
-                <input placeholder='What are you craving?' />
+                <input placeholder='What are you craving?' value={inputTerm} onChange={(e) => {setInputTerm(e.target.value)}} />
             </form>
             <div className='header__right'>
                 <p className='header__right__items'>

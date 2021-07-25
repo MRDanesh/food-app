@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Route, Router} from 'react-router-dom';
 
 import history from '../history';
@@ -7,11 +7,17 @@ import Main from './screens/Main';
 
 
 const App = () => {
+    const [term, setTerm] = useState('meat');
+    const [location, setLocation] = useState('Montreal');
+
+
     return (
         <Router history={history}>
             <div className='container'>
-                <Header/>
-                <Route path='/' component={Main} />
+                <Header term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
+                <Route path='/' exact>
+                    <Main term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
+                </Route>
             </div>
         </Router>
     )

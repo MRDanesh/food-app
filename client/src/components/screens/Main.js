@@ -4,21 +4,20 @@ import React, {useState, useEffect} from 'react';
 import ShopItem from './ShopItem';
 import yelp from '../../utils/yelp';
 
-const Main = () => {
-    const [term, setTerm] = useState('');
-    const [location, setLocation] = useState('');
+const Main = ({term, location, setTerm, setLocation}) => {
+    
     const [results, setResuls] = useState();
 
     const searchShop = async () => {
         const {data} = await yelp.get('/search', {
             params: {
-                limit: 50,
-                term: 'meat',
-                location: 'Montreal'    
+                limit: 35,
+                term,
+                location  
             }
         });
-        setResuls(data);
-        console.log(data);
+        setResuls(data.businesses);
+        console.log(results);
     };
 
     useEffect(() => {
@@ -30,7 +29,13 @@ const Main = () => {
                 sort
             </div>
             <div className='main__right'>
-                <ShopItem/>
+                {results ? results.map((result) => {
+                    return (
+                        <div className='main__right__container' key={result.id}>
+                            <ShopItem image={result.image_url} rating={result.rating} name={result.name} price={result.price}/>
+                        </div>
+                    )
+                }) : null}
             </div>
         </div>
     )

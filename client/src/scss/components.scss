@@ -67,6 +67,50 @@
     }
 
     &__right{
+        display: grid;
         flex: 0 0 80%;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+
+        .shopItem{
+            &__image{
+                width: 300px;
+                height: 150px;
+                
+            }
+            position: relative;
+            &__icon{
+                width: 5rem;
+                position: absolute;
+                left: 245px;
+                top: 5px;
+            }
+
+            &__buttom{
+                
+                &__name{
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    margin-top: 0.4rem;
+                }
+
+                &__price{
+                    font-size: 1.3rem;
+                }
+
+                &__rating{
+                    font-size: 1.3rem;
+                    background-color: rgb(206, 204, 204);
+                    position: absolute;
+                    left: 265px;
+                    top: 158px;
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    text-align: center;
+                    padding-top: 0.5rem;
+                }
+            }
+        }
     }
 }
