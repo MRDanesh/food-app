@@ -1,27 +1,18 @@
-import axios from 'axios';
 import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import ShopItem from './ShopItem';
-import yelp from '../../utils/yelp';
+import {searchShop} from '../../actions/shopActions';
 
-const Main = ({term, location, setTerm, setLocation}) => {
+const Main = ({term, location}) => {
+    const dispatch = useDispatch();
+    const shopsSearch = useSelector((state) => state.shopsSearch);
+    const {loading, error, shops} = shopsSearch;
+
     
-    const [results, setResuls] = useState();
-
-    const searchShop = async () => {
-        const {data} = await yelp.get('/search', {
-            params: {
-                limit: 35,
-                term,
-                location  
-            }
-        });
-        setResuls(data.businesses);
-        console.log(results);
-    };
 
     useEffect(() => {
-        searchShop();
+       dispatch(searchShop(term, location, 30));
     }, [term, location])
     return (
         <div className='main'>
@@ -29,7 +20,7 @@ const Main = ({term, location, setTerm, setLocation}) => {
                 sort
             </div>
             <div className='main__right'>
-                {results ? results.map((result) => {
+                {shops ? shops.map((result) => {
                     return (
                         <div className='main__right__container' key={result.id}>
                             <ShopItem image={result.image_url} rating={result.rating} name={result.name} price={result.price}/>
