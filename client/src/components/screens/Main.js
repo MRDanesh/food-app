@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import ShopItem from './ShopItem';
+import ShopItem from '../ShopItem';
 import {searchShop} from '../../actions/shopActions';
 
 const Main = ({term, location}) => {

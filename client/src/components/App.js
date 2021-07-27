@@ -4,6 +4,7 @@ import {Route, Router} from 'react-router-dom';
 import history from '../history';
 import Header from './screens/Header';
 import Main from './screens/Main';
+import ShopScreen from './screens/shopScreen';
 
 
 const App = () => {
@@ -17,6 +18,9 @@ const App = () => {
                 <Header term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
                 <Route path='/' exact>
                     <Main term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
+                </Route>
+                <Route path='/shop/:id'>
+                    <ShopScreen/>
                 </Route>
             </div>
         </Router>
