@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 import {shopsSearchReducer} from './reducers/shopReducers';
+import {userRegisterReducer} from './reducers/userReducers';
 
 const reducer = combineReducers({
-    shopsSearch: shopsSearchReducer
+    shopsSearch: shopsSearchReducer,
+    userRegister: userRegisterReducer
 });
 
 const initialState = {

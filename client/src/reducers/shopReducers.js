@@ -11,7 +11,7 @@ export const shopsSearchReducer = (state = {shops: [], loading: false, error: fa
         case SHOPS_SEARCH_SUCCESS:
             return {...state, loading: false, shops: action.payload};
         case SHOPS_SEARCH_FAIL:
-            return {...state, error: true};
+            return {...state, loading:false, error: true};
         default: 
             return state;
     }
