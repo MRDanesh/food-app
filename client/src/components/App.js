@@ -19,9 +19,7 @@ const App = () => {
                 <Route path='/' exact>
                     <Main term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
                 </Route>
-                <Route path='/shop/:id'>
-                    <ShopScreen/>
-                </Route>
+                <Route path='/shop/:id' component={ShopScreen}/>
             </div>
         </Router>
     )

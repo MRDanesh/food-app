@@ -23,7 +23,7 @@ const Main = ({term, location}) => {
                 {shops ? shops.map((result) => {
                     return (
                         <div className='main__right__container' key={result.id}>
-                            <ShopItem image={result.image_url} rating={result.rating} name={result.name} price={result.price}/>
+                            <ShopItem image={result.image_url} rating={result.rating} name={result.name} price={result.price} id={result.id}/>
                         </div>
                     )
                 }) : null}

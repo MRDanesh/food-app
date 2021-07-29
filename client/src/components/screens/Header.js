@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
-const Header = ({term, setTerm}) => {
+const Header = ({term, setTerm, match}) => {
+    console.log(match);
     const [inputTerm, setInputTerm] = useState('');
     
     const onFormSubmit = (e) => {

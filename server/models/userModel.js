@@ -16,7 +16,8 @@ const userSchema = Schema({
         require: true
     },
     favorites: {
-        type: Array
+        type: Array,
+        require: true
     }
 }, {
     timestamps: true

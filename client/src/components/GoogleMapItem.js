@@ -4,8 +4,8 @@ import {formatRelative} from 'date-fns';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-    width: '100vw',
-    height: '100vh'
+    width: '45rem',
+    height: '30rem'
 };
 
 const center = {

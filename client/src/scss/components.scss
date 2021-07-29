@@ -84,6 +84,10 @@
                 position: absolute;
                 left: 245px;
                 top: 5px;
+                cursor: pointer;
+            }
+            &__icon:hover{
+                fill: gray;
             }
 
             &__buttom{
@@ -112,5 +116,34 @@
                 }
             }
         }
+    }
+}
+
+//////////////////////
+//// Shop Screen ///////
+
+.shop{
+
+    &__image{
+
+    }
+
+    &__information{
+
+        &__top{
+
+        }
+
+        &__bottom{
+
+        }
+
+        &__item{
+            
+        }
+    }
+
+    &__gallery{
+
     }
 }
