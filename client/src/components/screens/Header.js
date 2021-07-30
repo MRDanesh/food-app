@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
 
-const Header = ({term, setTerm, match}) => {
-    console.log(match);
+const Header = ({setTerm, match}) => {
     const [inputTerm, setInputTerm] = useState('');
+
+    const userRegister = useSelector((state) => state.userRegister);
+    const {userInfo} = userRegister;
     
     const onFormSubmit = (e) => {
         e.preventDefault();
         setTerm(inputTerm);
-    }
+    };
 
     return (
         <div className='header'>
@@ -30,7 +33,7 @@ const Header = ({term, setTerm, match}) => {
             </form>
             <div className='header__right'>
                 <p className='header__right__items'>
-                    Profile
+                    {userInfo ? 'profile' : 'Login'}
                 </p>
             </div>
         </div>

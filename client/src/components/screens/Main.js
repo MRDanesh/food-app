@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import ShopItem from '../ShopItem';
 import {searchShop} from '../../actions/shopActions';
+import LoginScreen from './LoginScreen';
+import ModalExampleModal from '../Modal';
 
 const Main = ({term, location}) => {
     const dispatch = useDispatch();
@@ -16,6 +18,9 @@ const Main = ({term, location}) => {
     }, [term, location])
     return (
         <div className='main'>
+
+            <ModalExampleModal/>
+
             <div className='main__left'>
                 sort
             </div>
