@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import ShopItem from '../ShopItem';
 import {searchShop} from '../../actions/shopActions';
-import LoginScreen from './LoginScreen';
-import ModalExampleModal from '../Modal';
+import RegisterScreen from './RegisterScreen';
 
 const Main = ({term, location}) => {
     const dispatch = useDispatch();
@@ -13,14 +12,14 @@ const Main = ({term, location}) => {
 
     
 
+    
+
     useEffect(() => {
        dispatch(searchShop(term, location, 30));
     }, [term, location])
     return (
         <div className='main'>
-
-            <ModalExampleModal/>
-
+            <RegisterScreen/>
             <div className='main__left'>
                 sort
             </div>

@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 import connectDB from './config/db.js';
-import { registerUser } from './controllers/userController.js';
+import userRoutes from './routes/userRoutes.js';
 import {notFound, errorHandler} from './middlewares/errorMiddleware.js';
 
 dotenv.config();
@@ -12,7 +12,7 @@ app.use(express.json());
 
 connectDB();
 
-app.use('/api/users', registerUser);
+app.use('/api/users', userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

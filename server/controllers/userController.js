@@ -6,10 +6,10 @@ import generateToken from '../utils/generateToken.js';
 // Route: POST /api/users/login
 // Access: Public
 
-/*
+
 export const authUser = async (req, res, next) => {
     const {email, password} = req.body;
-
+    console.log('login');
     const user = await User.findOne({email});
 
     if (user) {
@@ -19,12 +19,23 @@ export const authUser = async (req, res, next) => {
         if (isPasswordCorrect) {
             res.send({
                 _id: user._id,
-
+                username: user.username,
+                email: user.email,
+                token: generateToken(user._id)
             })
-        }
+        } else {
+            res.status(401);
+            const err =  new Error ('Invalid Password!');
+            next(err);
+        } 
+        
+    } else {
+        res.status(401);
+        const err =  new Error ('User not found!');
+        next(err);
     }
 }
-*/
+
 
 // Description: Generate a profile
 // Route: POST /api/users
@@ -32,7 +43,7 @@ export const authUser = async (req, res, next) => {
 
 export const registerUser = async (req, res, next) => {
     const {username, email, password} = req.body;
-
+    console.log('register!');
     const existingUser = await User.findOne({email});
     if (existingUser) {
         const error = new Error ('User is already exist');
@@ -42,7 +53,7 @@ export const registerUser = async (req, res, next) => {
         var hashedPass = bcrypt.hashSync(password, salt);
         try {
             const registeredUser = await User.create({
-                username, email, hashedPass
+                username, email, password: hashedPass
             });
 
             if (registeredUser) {

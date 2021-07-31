@@ -2,24 +2,35 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Button, Header, Image, Modal, Form, Checkbox } from 'semantic-ui-react';
 
-import {login} from '../../actions/userActions';
+import {register} from '../../actions/userActions';
 
 
-const LoginScreen = () => {
-  const [open, setOpen] = useState(true);
+const RegisterScreen = () => {
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   // Redux
 
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const {userInfo} = userLogin;
   
 
+  useEffect(() => {
+    if (!userInfo) {
+      const timer = () => setTimeout(() => setOpen(true), 1000);    
+      const timerId = timer();
+      return () => {
+        clearTimeout(timerId);
+    } } 
+  }, []);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    if (email && password) {
-      dispatch(login(email, password));
+    if (username && email && password) {
+      dispatch(register(username, email, password));
     }
   }
 
@@ -43,6 +54,10 @@ const LoginScreen = () => {
               <input value={email} onChange={(e) => setEmail(e.target.value)} style={{fontSize: '14px'}} placeholder='Email' />
             </Form.Field>
             <Form.Field>
+              <label style={{fontSize: '14px'}}>username</label>
+              <input value={username} onChange={(e) => setUsername(e.target.value)} style={{fontSize: '14px'}} placeholder='username' />
+            </Form.Field>
+            <Form.Field>
               <label style={{fontSize: '14px'}}>Password</label>
               <input value={password} onChange={(e) => setPassword(e.target.value)} style={{fontSize: '14px'}} placeholder='Password' />
             </Form.Field>
@@ -54,4 +69,4 @@ const LoginScreen = () => {
   )
 }
 
-export default LoginScreen;
+export default RegisterScreen;

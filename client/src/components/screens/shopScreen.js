@@ -1,5 +1,6 @@
 import React from 'react';
 
+import RegisterScreen from './RegisterScreen';
 import GoogleMapItem from '../GoogleMapItem';
 
 const ShopScreen = ({match}) => {
@@ -7,6 +8,7 @@ const ShopScreen = ({match}) => {
     
     return (
         <div className='shop'>
+            <RegisterScreen/>
             <img className='shop__image' />
             <div className='shop__information'>
                 <div className='shop__information__top'>

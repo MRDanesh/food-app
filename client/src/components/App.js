@@ -5,7 +5,6 @@ import history from '../history';
 import Header from './screens/Header';
 import Main from './screens/Main';
 import ShopScreen from './screens/shopScreen';
-import LoginScreen from './screens/LoginScreen';
 
 
 const App = () => {
@@ -32,7 +31,6 @@ const App = () => {
                 <Route path='/' exact>
                     <Main term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
                 </Route>
-                <Route path='/login' component={LoginScreen} />
                 <Route path='/shop/:id' component={ShopScreen}/>
             </div>
         </Router>
