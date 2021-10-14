@@ -6,7 +6,7 @@ import {register} from '../../actions/userActions';
 
 
 const RegisterScreen = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -16,16 +16,13 @@ const RegisterScreen = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const {userInfo} = userLogin;
-  
 
   useEffect(() => {
-    if (!userInfo) {
-      const timer = () => setTimeout(() => setOpen(true), 1000);    
-      const timerId = timer();
-      return () => {
-        clearTimeout(timerId);
-    } } 
-  }, []);
+    if (userInfo) {
+      setOpen(false);
+    }
+  }, [userInfo])
+  
 
   const onFormSubmit = (e) => {
     e.preventDefault();

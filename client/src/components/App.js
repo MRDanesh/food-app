@@ -4,6 +4,7 @@ import {Route, Router, Redirect} from 'react-router-dom';
 import history from '../history';
 import Header from './screens/Header';
 import Main from './screens/Main';
+import RegisterScreen from './screens/RegisterScreen';
 import ShopScreen from './screens/shopScreen';
 
 
@@ -32,6 +33,7 @@ const App = () => {
                     <Main term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
                 </Route>
                 <Route path='/shop/:id' component={ShopScreen}/>
+                <Route path='/user/register' component={RegisterScreen} />
             </div>
         </Router>
     )

@@ -6,13 +6,26 @@ import {login} from '../../actions/userActions';
 
 
 const LoginScreen = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   // Redux
 
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const {userInfo} = userLogin;
+  
+
+  useEffect(() => {
+    if (!userInfo) {
+      const timer = () => setTimeout(() => setOpen(true), 1000);    
+      const timerId = timer();
+      return () => {
+        clearTimeout(timerId);
+    }} 
+    setOpen(false);
+  }, [userLogin]);
   
 
 

@@ -38,16 +38,18 @@
     }
 
     &__right{
-        
+        display: flex;
+        align-items: center;
 
         &__items{
-            
+            width: 90%;
+            text-align: center;
             border-radius: 15rem;
-            padding: 0.5rem 1.5rem;
-            margin-left: 2rem;
+            padding: 0.75rem 1.5rem;
+            margin-right: 2rem;
             background-color: black;
             color: white;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
     }
 }

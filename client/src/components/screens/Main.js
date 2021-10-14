@@ -3,23 +3,28 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import ShopItem from '../ShopItem';
 import {searchShop} from '../../actions/shopActions';
-import RegisterScreen from './RegisterScreen';
+import LoginScreen from './LoginScreen';
 
 const Main = ({term, location}) => {
     const dispatch = useDispatch();
+    
     const shopsSearch = useSelector((state) => state.shopsSearch);
     const {loading, error, shops} = shopsSearch;
 
+    const userLogin = useSelector((state) => state.userLogin);
+    const {userInfo} = userLogin;
     
-
     
 
     useEffect(() => {
        dispatch(searchShop(term, location, 30));
-    }, [term, location])
+    }, [term, location]);
+
+    
+
     return (
         <div className='main'>
-            <RegisterScreen/>
+            <LoginScreen/>
             <div className='main__left'>
                 sort
             </div>

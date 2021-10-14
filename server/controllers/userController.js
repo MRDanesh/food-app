@@ -75,3 +75,25 @@ export const registerUser = async (req, res, next) => {
         }
     }
 }
+
+// Description: Get current user profile 
+// Route: GET /api/users/profile
+// Acess: Private
+
+export const getUserProfile = async (req, res, next) => {
+    const user = await User.findById(req.user._id);
+    if (user) {
+        res.send({
+            _id: user._id,
+            username: user.username,
+            email: user.email
+        });
+    } else {
+        res.status(404);
+        const error = new Error ('User Not Found!')
+        next (error);
+    }
+};
+
+
+

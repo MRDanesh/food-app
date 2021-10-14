@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 import RegisterScreen from './RegisterScreen';
+import {searchShopById} from '../../actions/shopActions';
 import GoogleMapItem from '../GoogleMapItem';
 
 const ShopScreen = ({match}) => {
     const shopId = match.params.id;
+    
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(searchShopById(shopId));
+    },[shopId])
     
     return (
         <div className='shop'>
