@@ -125,13 +125,39 @@
 //// Shop Screen ///////
 
 .shop{
-
+    
     &__image{
+        background: linear-gradient(to bottom, rgb(255, 255, 255), black);
+        &__open{
+            width: 100vw;
+            height: 40vh;
+            opacity: 0.6;
+        }
+    }
+
+    &__name{
+        color: white;
+        position: absolute;
+        top: 47vh;
+        margin-left: 2rem;
+        font-size: 3rem;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+
+        &__rating{
+            font-size: 1.85rem;
+            font-weight: normal;
+        }
 
     }
 
     &__information{
+        margin: 2rem 0 0 2rem;
 
+        &__category{
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
         &__top{
 
         }

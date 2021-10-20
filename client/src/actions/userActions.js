@@ -111,3 +111,32 @@ export const fetchUser = () => async (dispatch, getState) => {
         })
     }
 };
+
+export const updateUserLikes = (likedShop) => async (dispatch, getState) => {
+    const {userLogin: {userInfo}} = getState();
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    };
+
+    const userInfoFromStorage = localStorage.getItem('userInfo') 
+    ?JSON.parse(localStorage.getItem('userInfo')) 
+    : null;
+
+    const favorites = userInfoFromStorage.favorites;
+    console.log(favorites);
+    const updatedLikedShops = [...favorites, likedShop];
+    console.log('done!');
+
+    const {data} = await axios.put(
+        '/api/users/profile/likes',
+        {favorites: updatedLikedShops},
+        config
+    );
+
+    localStorage.setItem('userInfo', JSON.stringify(data));
+
+};

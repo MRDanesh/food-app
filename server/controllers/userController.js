@@ -21,6 +21,7 @@ export const authUser = async (req, res, next) => {
                 _id: user._id,
                 username: user.username,
                 email: user.email,
+                favorites: user.favorites,
                 token: generateToken(user._id)
             })
         } else {
@@ -62,6 +63,7 @@ export const registerUser = async (req, res, next) => {
                     _id: registeredUser._id,
                     username: registeredUser.username,
                     email: registeredUser.email,
+                    favorites: registeredUser.favorites,
                     token: generateToken(registeredUser._id)
                 })
             } else {
@@ -86,14 +88,40 @@ export const getUserProfile = async (req, res, next) => {
         res.send({
             _id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            favorites: user.favorites
         });
     } else {
         res.status(404);
-        const error = new Error ('User Not Found!')
+        const error = new Error ('User Not Found!');
         next (error);
     }
 };
 
 
 
+// Description: Update favourite restaurants
+// Route: PUT /api/users/profile/likes
+// Acess: Private
+
+export const updateUserFavouritesShops = async (req, res, next) => {
+    const favorites = req.body.favorites;
+
+    const user = await User.findById(req.user._id);
+    if (user) {
+        user.favorites = favorites;
+        const updatedUser = await user.save();
+        res.status(201);
+        res.send({
+            favorites: updatedUser.favorites,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            token: generateToken(updatedUser._id)
+        })
+
+    } else {
+        res.status(404);
+        const error = new Error ('User Not Found!');
+        next (error);
+    }
+}
