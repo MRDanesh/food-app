@@ -30,7 +30,7 @@ const App = () => {
             <div className='container'>
                 <Header term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
                 <Route path='/' exact>
-                    <Main term={term} setTerm={setTerm} location={location} setLocation={setLocation}/>
+                    <Main term={term} location={location} setLocation={setLocation}/>
                 </Route>
                 <Route path='/shop/:id' component={ShopScreen}/>
                 <Route path='/user/register' component={RegisterScreen} />

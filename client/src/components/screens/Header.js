@@ -8,6 +8,7 @@ const Header = ({setTerm, match}) => {
     const dispatch = useDispatch();
     const userLogin = useSelector((state) => state.userLogin);
     const {userInfo} = userLogin;
+    console.log(userInfo);
     
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +21,6 @@ const Header = ({setTerm, match}) => {
 
     return (
         <div className='header'>
-            {userInfo?userInfo.username:null}
             <div className='header__left'>
                 FoodFind
             </div>
@@ -44,11 +44,12 @@ const Header = ({setTerm, match}) => {
                 </p>
                 <svg 
                     onClick= {onLoggedOut}
+                    style={{cursor:'pointer'}}
                     xmlns="http://www.w3.org/2000/svg" 
                     enableBackground="new 0 0 24 24" 
-                    height="24px" 
+                    height="30px" 
                     viewBox="0 0 24 24" 
-                    width="24px" 
+                    width="30px" 
                     fill="#000000"
                 >
                     <g>

@@ -105,19 +105,31 @@ export const getUserProfile = async (req, res, next) => {
 // Acess: Private
 
 export const updateUserFavouritesShops = async (req, res, next) => {
-    const favorites = req.body.favorites;
+    const {likedShop} = req.body;
 
     const user = await User.findById(req.user._id);
+    
+
     if (user) {
-        user.favorites = favorites;
+
+        const oldFavorites = user.favorites;
+        const existShop = oldFavorites.find((x) => x.id === likedShop.id);
+        if (existShop){
+            var updatedFavorites = oldFavorites;
+        } else {
+            var updatedFavorites = [...oldFavorites, likedShop];
+        }
+
+        user.favorites = updatedFavorites;
         const updatedUser = await user.save();
         res.status(201);
         res.send({
             favorites: updatedUser.favorites,
-            name: updatedUser.name,
+            username: updatedUser.username,
             email: updatedUser.email,
             token: generateToken(updatedUser._id)
         })
+        console.log(user.favorites);
 
     } else {
         res.status(404);

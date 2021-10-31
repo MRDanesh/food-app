@@ -66,6 +66,38 @@
     
     &__left{
         flex: 0 0 20% ;
+
+        &__price{
+            margin-top: 2rem;
+            margin-right: 3rem;
+            width: 10rem;
+            display: flex;
+            justify-content: space-between;
+
+            &__item{
+                border: 1px solid black;
+                padding: 1mm 2mm;
+                margin-right: 2mm;
+                border-radius: 50%;
+                background-color: #ebe5e5;
+                cursor: pointer;
+            }
+
+            &__item:hover{
+                background-color: #afacac;
+            }
+            &__item__selected{
+                background-color: #afacac;
+            }
+            
+        }
+
+
+        .radioButton__input{
+            display: block;
+            align-items: center;
+        }
+
     }
 
     &__right{

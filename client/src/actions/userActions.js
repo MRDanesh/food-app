@@ -81,7 +81,7 @@ export const login = (email, password) => async (dispatch, getState) => {
 export const logout = () => (dispatch) => {
     dispatch({type: USER_LOGOUT});
     localStorage.removeItem('userInfo');
-    //history.push('/');
+    history.push('/');
 };
 
 export const fetchUser = () => async (dispatch, getState) => {
@@ -122,18 +122,9 @@ export const updateUserLikes = (likedShop) => async (dispatch, getState) => {
         }
     };
 
-    const userInfoFromStorage = localStorage.getItem('userInfo') 
-    ?JSON.parse(localStorage.getItem('userInfo')) 
-    : null;
-
-    const favorites = userInfoFromStorage.favorites;
-    console.log(favorites);
-    const updatedLikedShops = [...favorites, likedShop];
-    console.log('done!');
-
     const {data} = await axios.put(
         '/api/users/profile/likes',
-        {favorites: updatedLikedShops},
+        {likedShop},
         config
     );
 
