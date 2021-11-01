@@ -7,11 +7,11 @@ import LoginScreen from './LoginScreen';
 import {Radio} from 'semantic-ui-react';
 
 const Main = ({term, location}) => {
+
+    // REDUX SETUP
     const dispatch = useDispatch();
-    
     const shopsSearch = useSelector((state) => state.shopsSearch);
     const {loading, error, shops} = shopsSearch;
-
     const userLogin = useSelector((state) => state.userLogin);
     const {userInfo} = userLogin;
     
@@ -19,20 +19,17 @@ const Main = ({term, location}) => {
        dispatch(searchShop(term, location, 30));
     }, [term, location]);
 
-    // Sort by price and rating
+    // STATES FOR SORTING
 
     const [rating, setRating] = useState(false);
     const [price$, setPrice$] = useState(false);
     const [price$$, setPrice$$] = useState(false);
     const [price$$$, setPrice$$$] = useState(false);
     const [noSort, setNoSort] = useState(true);
-
+    
+    // DIFFERENT SORTINGS
     if (shops) {
-        var sortedByRating = shops.sort((a, b) => {
-            console.log(a.rating);
-
-            return b.rating - a.rating;
-        });
+        var sortedByRating = shops.sort((a, b) => b.rating - a.rating);
         var sortedByPopularity = shops.sort((a, b) => b.review_count - a.review_count);
         var sortedByPrice$ = shops.filter((x) => x.price === '$');
         var sortedByPrice$$ = shops.filter((x) => x.price === '$$');
@@ -68,9 +65,6 @@ const Main = ({term, location}) => {
         }
     };
 
-    console.log('shops:', shops);
-    console.log('ratings:', sortedByRating);
-
     return (
         <div className='main'>
             <LoginScreen/>
@@ -92,9 +86,9 @@ const Main = ({term, location}) => {
                     </form>
                 </div>
                 <div className='main__left__price'>
-                    <span onClick={onChangePrice} className={`main__left__price__item ${price$ ? `main__left__price__item__selected` : ``}`}>$</span>
-                    <span onClick={onChangePrice} className={`main__left__price__item ${price$$ ? `main__left__price__item__selected` : ``}`}>$$</span>
-                    <span onClick={onChangePrice} className={`main__left__price__item ${price$$$ ? `main__left__price__item__selected` : ``}`}>$$$</span>
+                    <span onClick={onChangePrice} className={`main__left__price__item ${price$ ? `selected` : ``}`}>$</span>
+                    <span onClick={onChangePrice} className={`main__left__price__item ${price$$ ? `selected` : ``}`}>$$</span>
+                    <span onClick={onChangePrice} className={`main__left__price__item ${price$$$ ? `selected` : ``}`}>$$$</span>
                 </div>
             </div>
             <div className='main__right'>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Button, Header, Image, Modal, Form, Checkbox } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import {register} from '../../actions/userActions';
 
@@ -59,6 +60,8 @@ const RegisterScreen = () => {
               <input value={password} onChange={(e) => setPassword(e.target.value)} style={{fontSize: '14px'}} placeholder='Password' />
             </Form.Field>
             <Button style={{fontSize: '14px'}} type='submit'>Signup</Button>
+            <Header style={{fontSize: '14px', display: 'inline'}}>Already have an account? </Header>
+            <Link to='/user/login' style={{fontSize: '14px', fontWeight:'bold'}}> Sign in here</Link>
           </Form>
         </Modal.Description>
       </Modal.Content>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { logout } from '../../actions/userActions';
+import {Link} from 'react-router-dom';
 
 const Header = ({setTerm, match}) => {
     const [inputTerm, setInputTerm] = useState('');
@@ -39,9 +40,9 @@ const Header = ({setTerm, match}) => {
                 <input placeholder='What are you craving?' value={inputTerm} onChange={(e) => {setInputTerm(e.target.value)}} />
             </form>
             <div className='header__right'>
-                <p className='header__right__items'>
+                <Link to='/user/profile' className='header__right__items'>
                     {userInfo ? `Hello, ${userInfo.username}` : 'Login'}
-                </p>
+                </Link>
                 <svg 
                     onClick= {onLoggedOut}
                     style={{cursor:'pointer'}}

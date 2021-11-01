@@ -81,12 +81,10 @@
                 border-radius: 50%;
                 background-color: #ebe5e5;
                 cursor: pointer;
+                
             }
 
             &__item:hover{
-                background-color: #afacac;
-            }
-            &__item__selected{
                 background-color: #afacac;
             }
             
@@ -210,6 +208,69 @@
 
 
 
+/// PROFILE SCREEN
+
+.profile{
+    display: flex;
+    margin: 4rem 4rem;
+
+    &__left{
+        margin-right: 10rem;
+
+        &__item{
+            border: 1px solid black;
+            margin-bottom: 1mm;
+            width: 15rem;
+            height: 3rem;
+            padding-left: 1.5rem;
+            padding-top:0.3rem;
+            cursor: pointer;
+            
+        }
+        &__item:hover{
+            background-color: #d0cdcd;
+        }
+    }
+
+    &__right{
+
+        .profileSetting{
+            &__header{
+                display: flex;
+                margin-bottom: 3rem;
+                
+                &__left{
+                    margin-right: 4rem;
+                }
+            }
+
+            &__main{
+                display: flex;
+                flex-direction: column;
+            }
+            & input{
+                width: 30rem;
+                height: 4rem;
+                text-align: center;
+                background-color: var(--color-grey-light-3);
+                border: 1px solid rgb(209, 209, 209);
+                
+            }
+
+            & input:focus{
+                outline: none;
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
 ////////////////
 
 .modalScreen{
@@ -217,4 +278,14 @@
     .modalHeader{
         font-size: 25px;  
     }
+}
+
+
+
+
+/////// GENERAL CLASSES
+
+.selected{
+    background-color: #afacac;
+    font-weight: bold;
 }

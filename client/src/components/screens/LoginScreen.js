@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Button, Header, Image, Modal, Form, Checkbox } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import {login} from '../../actions/userActions';
 
@@ -59,7 +60,9 @@ const LoginScreen = () => {
               <label style={{fontSize: '14px'}}>Password</label>
               <input value={password} onChange={(e) => setPassword(e.target.value)} style={{fontSize: '14px'}} placeholder='Password' />
             </Form.Field>
-            <Button style={{fontSize: '14px'}} type='submit'>Signup</Button>
+            <Button style={{fontSize: '14px'}} type='submit'>Sign in</Button>
+            <Header style={{fontSize: '14px', display:'inline'}}> You dont have an account? </Header>
+            <Link to='/user/register' style={{fontSize: '14px', fontWeight:'bold'}}> Sign up here</Link>
           </Form>
         </Modal.Description>
       </Modal.Content>

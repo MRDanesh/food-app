@@ -3,7 +3,9 @@ import {Route, Router, Redirect} from 'react-router-dom';
 
 import history from '../history';
 import Header from './screens/Header';
+import LoginScreen from './screens/LoginScreen';
 import Main from './screens/Main';
+import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShopScreen from './screens/shopScreen';
 
@@ -34,6 +36,8 @@ const App = () => {
                 </Route>
                 <Route path='/shop/:id' component={ShopScreen}/>
                 <Route path='/user/register' component={RegisterScreen} />
+                <Route path='/user/login' component={LoginScreen} />
+                <Route path='/user/profile' component={ProfileScreen} />
             </div>
         </Router>
     )
