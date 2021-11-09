@@ -10,7 +10,7 @@ export const protect = async (req, res, next) => {
             next();
         } catch (err) {
             res.status(401);
-            const error = new Error ('Not Authorize!');
+            const error = new Error ('Not Authorize!, invalid or expired token!');
             next(error);
         }
     }

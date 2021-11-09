@@ -237,10 +237,17 @@
         .profileSetting{
             &__header{
                 display: flex;
+                align-items: center;
                 margin-bottom: 3rem;
                 
                 &__left{
                     margin-right: 4rem;
+                    width: 5rem;
+                    border-radius: 50%;
+                }
+
+                &__right{
+                    font-weight: bold;
                 }
             }
 

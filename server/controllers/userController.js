@@ -129,11 +129,42 @@ export const updateUserFavouritesShops = async (req, res, next) => {
             email: updatedUser.email,
             token: generateToken(updatedUser._id)
         })
-        console.log(user.favorites);
-
     } else {
         res.status(404);
         const error = new Error ('User Not Found!');
         next (error);
     }
 }
+
+
+// Description: Update profile 
+// Route: PUT /api/users/profile/update
+// Acess: Private
+
+export const updateUserProfile = async (req, res, next) => {
+    const {updatedUsername, updatedEmail, updatedPassword} = req.body;
+
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+        user.username = updatedUsername;
+        user.email = updatedEmail;
+
+        var salt = bcrypt.genSaltSync(10);
+        var hashedPass = bcrypt.hashSync(updatedPassword, salt);
+        user.password = hashedPass;
+
+        const updatedUser = await user.save();
+        res.send({
+            favorites: updatedUser.favorites,
+            username: updatedUser.username,
+            email: updatedUser.email,
+            token: generateToken(updatedUser._id)
+        })
+
+    } else {
+        res.status(404);
+        const error = new Error ('User Not Found!');
+        next (error);
+    }
+};
